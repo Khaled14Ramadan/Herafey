@@ -1,0 +1,14 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  width: 100%;
+  font-family: "Times New Roman", Times, serif;
+  color: rgb(29, 29, 29);
+}
+
+#root {
+  height: 100%;
+}/*# sourceMappingURL=index.css.map */
