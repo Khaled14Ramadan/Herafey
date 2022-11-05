@@ -8,8 +8,8 @@ const initialState={
     initialState,
   reducers:{
 changeLang:(state)=>{
-    state.lang==="en"?state.lang="ar":state.lang="en"
-    localStorage.setItem("language",`${state.lang}`)
+    state.lang==="en"?state.lang="ar":state.lang="en";
+    localStorage.setItem("language",`${state.lang}`);
 }
   }
   })
