@@ -1,20 +1,34 @@
 import './App.css';
-import { useSelector,useDispatch} from 'react-redux'
-import {changeLang} from "./Redux/Languageslice/languageslice"
-import messages from './Locale/messages';
+import { useSelector } from 'react-redux'
+import NavBar from './components/NavBar/index';
+import {Routes , Route} from 'react-router-dom';
+import Home from './components/Home/index';
+import Profile from './components/Profile/index';
+import Jobs from './components/Jobs/index';
+import Messaging from './components/Messaging/index';
+import Notification from './components/Notification/index';
+import NotFound from './components/NotFound/index';
+import Friends from './components/Friends/index';
+
+
 function App() {
-  
-  const test=useSelector((state)=>state.lang.lang)
-  const dispatch=useDispatch()
-const changeL=()=>{
-  dispatch(changeLang())
-}
-const {title}=messages[test]
+  const test = useSelector((state) => state.lang.lang)
+
+  console.log(test);
   return (
-    <div className={test==="en"?"english":"arabic"}>
-<p>{title}</p>
-{test}
-<button onClick={changeL}>click me</button>
+    <div className={test === "en" ? "english" : "arabic"}>
+      <NavBar/>
+      <Routes>
+        <Route path='home'  element={<Home />} />
+        <Route path='/'  element={<Home />} />
+        <Route path='profile'  element={<Profile />} />
+        <Route path='friends'  element={<Friends />} />
+        <Route path='jobs'  element={<Jobs />} />
+        <Route path='messaging'  element={<Messaging />} />
+        <Route path='notification'  element={<Notification />} />
+        <Route path='*'  element={<NotFound />} />
+        
+      </Routes>
     </div>
   );
 }
