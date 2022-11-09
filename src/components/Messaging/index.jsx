@@ -1,10 +1,16 @@
-import React from 'react'
+import React from "react";
+import Sidebar from "./Sidebar";
+import Chat from "./Chat";
 
 const Messaging = () => {
   return (
-    <div>Messaging
+    <div className="home">
+      <div className="container">
+        <Sidebar />
+        <Chat />
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Messaging
+export default Messaging;
