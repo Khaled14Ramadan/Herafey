@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styles from "./listview.module.scss"
 import Button from './Button'
-import users from '../../../extras/users'
 const ListView = () => {
   return (
     <section className={styles.listviewWrapper}>

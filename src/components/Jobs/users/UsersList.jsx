@@ -2,7 +2,6 @@ import React from 'react'
 import GridView from './GridView'
 import ListView from './ListView'
 import { useSelector } from 'react-redux'
-import styles from "./userslist.module.scss"
 import messages from '../../../Locale/messages'
 const UsersList = () => {
   const lang=useSelector((state)=>state.lang.lang)
@@ -12,7 +11,7 @@ const isfilterEmpty=useSelector((state)=>state.filter.filterVal)
 const{noitems}=messages[lang].Jobs
 if(!isfilterEmpty){
   return (
-    <p className={`${styles.noitems} text-center`}>{noitems}</p>
+    <p className={` text-center`}>{noitems}</p>
   )
 }
   if(view=="list"){

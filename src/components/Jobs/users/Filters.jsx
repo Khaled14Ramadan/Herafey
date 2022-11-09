@@ -13,7 +13,6 @@ const Filters = (props) => {
   const filterForStyle = useSelector((state) => state.filter.filterVal);
   const lang = useSelector((state) => state.lang.lang);
   const dispatch = useDispatch();
-  console.log(filterForStyle);
   const getselectValue=(e)=>{
     dispatch(setloc(e.target.value))
   }
