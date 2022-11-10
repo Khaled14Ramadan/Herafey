@@ -1,0 +1,59 @@
+.FollowersCard {
+  width: 100%;
+  border-radius: 0.7rem;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  padding: 2rem 1rem;
+  background-color: var(--mainColor);
+}
+.FollowersCard h3 {
+  text-align: center;
+  color: var(--secondaryColor);
+}
+.follower {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.follower > div {
+  display: flex;
+  gap: 10px;
+}
+
+.followerImage {
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 50%;
+}
+
+.name {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.name > span:nth-of-type(1) {
+  font-weight: bold;
+}
+
+.follow-btn {
+  height: 2rem;
+  padding-left: 20px;
+  padding-right: 20px;
+  background: var(--secondaryColor);
+  border: 2px solid var(--white);
+  color: var(--white);
+  font-weight: bold;
+  border-radius: 0.5rem;
+  transition: all 100ms ease-out;
+}
+
+.follow-btn:hover {
+  color: var(--white);
+  border: 2px solid var(--secondaryColor);
+  cursor: pointer;
+}

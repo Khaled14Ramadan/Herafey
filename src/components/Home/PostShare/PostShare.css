@@ -1,0 +1,39 @@
+.PostShare{
+    display: flex;
+    gap: 1rem;
+    background-color: var(--mainColor);
+    padding: 1.5rem 1rem;
+    border-radius: 1rem;
+}
+
+
+.PostShare>img{
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+}
+.PostShare>div{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    gap: 1rem;
+}
+
+.PostShare>div>input{
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 17px;
+    border: none;
+    outline: none;
+}
+.PostShare>button {
+  padding-left: 20px;
+  padding-right: 20px;
+  background: var(--secondaryColor);
+  border: 2px solid var(--white);
+  color: var(--white);
+  font-weight: bold;
+  border-radius: 0.5rem;
+  transition: all 100ms ease-out;
+}
