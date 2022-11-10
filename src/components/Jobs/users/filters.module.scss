@@ -1,0 +1,88 @@
+.formControled {
+    margin-bottom: 1.25rem;
+    h5 {
+      margin-bottom: 0.5rem;
+    }
+  }
+  .searchInput::placeholder {
+    text-transform: capitalize;
+  }
+  button {
+    display: block;
+    margin: 0.25em 0;
+    padding: 0.25rem 0;
+    text-transform: capitalize;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid transparent;
+    cursor: pointer;
+  }
+  @media (min-width: 768px) {
+    .content {
+      position: sticky;
+      top: 1rem;
+      background-color: var(--mainColor);
+      border-radius: 3px;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .hide{
+      display: none !important;
+    }
+    .filterLogo span{
+      font-size: 1rem;
+      }
+  }
+ .togglebtn{
+  position: absolute;
+  left: 5px;
+  font-size: 1.5rem;
+top: 10%;
+}
+.togglebtnarabic{
+  left: 62%;
+}
+@media screen and (min-width: 768px) {
+.togglebtn{
+  display: none;
+}
+}
+.filterLogo{
+  cursor: pointer;
+   span{
+    font-size: 0.78rem;
+    color: var(--secondaryColor);
+    font-weight: bold;
+  }
+}
+
+@media screen and (max-width: 768px) {
+.filterLogo span{
+  font-size: 0.7rem;
+}
+  }
+.sortInput {
+  border-color:var(--mainColor);
+  font-size: 1rem;
+  text-transform: capitalize;
+  padding: 0.25rem 0.5rem;
+  border-radius: 5px;
+}
+
+label {
+  font-size: 1rem;
+  text-transform: capitalize;
+  padding-bottom: 0.25rem;
+}
+.loctitle{
+  font-size: 1.3rem;
+}
+.activeLogo{
+  opacity: 1;
+}
+.notactivelogo{
+  opacity: 0.5;
+}
+.logoContainer img{
+  transform: scale(1.1);
+}
