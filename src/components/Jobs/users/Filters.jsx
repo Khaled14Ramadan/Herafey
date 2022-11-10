@@ -75,12 +75,12 @@ dispatch(setfilterval(val))
             </div>
             <span>نجار</span>
           </div> */}
-          {lang=="en"&&logos.map((logo,index)=>(
+          {lang==="en"&&logos.map((logo,index)=>(
  <div
  className={
    props.show
-     ? `col-2 text-center ${styles.filterLogo} ${filterForStyle==""?"":filterForStyle==logo.job?"":styles.notactivelogo}`
-     : `col-3 text-center   col-md-4 ${styles.filterLogo} ${filterForStyle==""?"":filterForStyle==logo.job?"":styles.notactivelogo}`
+     ? `col-2 text-center ${styles.filterLogo} ${filterForStyle===""?"":filterForStyle===logo.job?"":styles.notactivelogo}`
+     : `col-3 text-center   col-md-4 ${styles.filterLogo} ${filterForStyle===""?"":filterForStyle===logo.job?"":styles.notactivelogo}`
  }
  key={index}
 >
@@ -100,8 +100,8 @@ dispatch(setfilterval(val))
  <div
  className={
    props.show
-     ? `col-2 text-center ${styles.filterLogo} ${filterForStyle==""?"":filterForStyle==logo.job?"":styles.notactivelogo}`
-     : `col-3 text-center   col-md-4 ${styles.filterLogo} ${filterForStyle==""?"":filterForStyle==logo.job?"":styles.notactivelogo}`
+     ? `col-2 text-center ${styles.filterLogo} ${filterForStyle===""?"":filterForStyle===logo.job?"":styles.notactivelogo}`
+     : `col-3 text-center   col-md-4 ${styles.filterLogo} ${filterForStyle===""?"":filterForStyle===logo.job?"":styles.notactivelogo}`
  }
  key={index}
 >
@@ -122,7 +122,7 @@ dispatch(setfilterval(val))
 <label htmlFor="location" className="me-1">{location}</label>
       <select name="location" id="location" className={styles.sortInput}  onChange={getselectValue}>
         {/* <option defaultValue={selected==""} value="none" disabled hidden>pick a city</option> */}
-      <option value="none" selected={selected==""} disabled hidden>{defaultforloc}</option>
+      <option value="none" selected={selected===""} disabled hidden>{defaultforloc}</option>
     {cities.map((city,index)=>(
               <option key={index}  value={city}>{city}</option>
 
