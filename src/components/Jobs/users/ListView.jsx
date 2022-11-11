@@ -1,25 +1,46 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link,Navigate } from 'react-router-dom'
 import styles from "./listview.module.scss"
-import Button from './Button'
+import { useDispatch,useSelector } from 'react-redux'
 const ListView = () => {
+  const filteredUsers=useSelector((state)=>state.filter.filteredUsers)
+  const loading=useSelector((state)=>state.filter.loading)
+  const error=useSelector((state)=>state.filter.error)
+  const view=useSelector((state)=>state.filter.view)
+ 
+  console.log(filteredUsers);
+  // if(loading){
+  //   return(
+  //     <p>loading</p>
+  //   )
+  // }
+  // if(error){
+  //   return(
+  //     <p>error</p>
+  //   )
+  // }
   return (
-    <section className={styles.listviewWrapper}>
-<article>
+    <>
+{filteredUsers?.length > 0 && !loading &&filteredUsers.map((user)=>(
+  <section className={styles.listviewWrapper}>
+  <article>
   <div className={styles.imgContainer}>
-  <img src="https://dl.airtable.com/.attachmentThumbnails/89ba7458c24252be77f5a835dd398880/c13ef359"/>
+    <Link to={`/profile/${user.uid}`}>
+    <img src={user.photoURL} />
+    </Link>
   </div>
 <div className='ps-1 pt-2'>
-  <h4>name</h4>
-  <h5 className={styles.price}>123</h5>
-  <p>Lorem, ipsum.</p>
-  <Link>
-  {/* <Button>Details</Button> */}
-  </Link>
+  <h4>{user.displayName}</h4>
+  <h5 className={styles.price}>{user.city}</h5>
+  <p>{user.job}</p>
 </div>
 </article>
-  </section>
+
+</section>
+))}
+  </>
   )
+
 }
 
 export default ListView
