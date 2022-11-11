@@ -25,7 +25,8 @@ $right : right;
         align-items: center;
         margin: 5px auto;
         height: 100%;
-        max-width: 1128px;
+        // max-width: 1128px;
+        width: 100%;
 
         .search {
             opacity: 1;
@@ -79,8 +80,9 @@ $right : right;
 
         .navBar {
             display: block;
+            
 
-            @media (max-width: 768px) {
+            @media (max-width: 997px) {
                 position: fixed;
                 left: 0;
                 bottom: 0;
@@ -92,7 +94,8 @@ $right : right;
                 display: flex;
                 flex-wrap: nowrap;
                 list-style-type: none;
-                justify-content: space-between;
+                justify-content: space-around;
+                width: 98%;
 
                 .active {
                     span::after {
@@ -182,7 +185,7 @@ $right : right;
                             }
                         }
 
-                        @media (max-width: 767px) {
+                        @media (max-width: 997px) {
                             display: none;
                         }
                     }
@@ -227,7 +230,7 @@ $right : right;
         text-decoration: none;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 998px) {
         display: flex;
         width: 100%;
         justify-content: flex-end;

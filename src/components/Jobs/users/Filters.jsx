@@ -77,12 +77,12 @@ dispatch(fetchUsers(val))
             </div>
             <span>نجار</span>
           </div> */}
-          {lang=="en"&&logos.map((logo,index)=>(
+          {lang==="en"&&logos.map((logo,index)=>(
  <div
  className={
    props.show
-     ? `col-2 text-center ${styles.filterLogo} ${filterForStyle==""?"":filterForStyle==logo.job?"":styles.notactivelogo}`
-     : `col-3 text-center   col-md-4 ${styles.filterLogo} ${filterForStyle==""?"":filterForStyle==logo.job?"":styles.notactivelogo}`
+     ? `col-2 text-center ${styles.filterLogo} ${filterForStyle===""?"":filterForStyle===logo.job?"":styles.notactivelogo}`
+     : `col-3 text-center   col-md-4 ${styles.filterLogo} ${filterForStyle===""?"":filterForStyle===logo.job?"":styles.notactivelogo}`
  }
  key={index}
 >
@@ -102,8 +102,8 @@ dispatch(fetchUsers(val))
  <div
  className={
    props.show
-     ? `col-2 text-center ${styles.filterLogo} ${filterForStyle==""?"":filterForStyle==logo.job?"":styles.notactivelogo}`
-     : `col-3 text-center   col-md-4 ${styles.filterLogo} ${filterForStyle==""?"":filterForStyle==logo.job?"":styles.notactivelogo}`
+     ? `col-2 text-center ${styles.filterLogo} ${filterForStyle===""?"":filterForStyle===logo.job?"":styles.notactivelogo}`
+     : `col-3 text-center   col-md-4 ${styles.filterLogo} ${filterForStyle===""?"":filterForStyle===logo.job?"":styles.notactivelogo}`
  }
  key={index}
 >

@@ -19,6 +19,12 @@
         sortcriteria:["أ-ي","ي-أ"],
         jobs:"وظائف"
 
-    }
+    },
+    Home:{
+        WhoFollowingYou : 'من يتابعك',
+        Follow: 'متابعة',
+        Likes :' إعجاب',
+        WhatYouLookingFor:'هل تريد كتابة مقال؟',
+    },
 }
 export default ar

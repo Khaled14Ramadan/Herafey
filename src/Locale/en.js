@@ -21,6 +21,12 @@
         ],
         loctitle:"choose your city",
         jobs:"jobs"
+    },
+    Home: {
+        WhoFollowingYou :'Who is Following You',
+        Follow : 'Follow',
+        Likes : 'Likes',
+        WhatYouLookingFor :'is want write article ?',
     }
 }
 export default en

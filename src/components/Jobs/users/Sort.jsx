@@ -17,10 +17,10 @@ const Sort = () => {
   return (
     <section className={styles.sortsection}>
     <div className={styles.btnContainer}>
-    <button onClick={()=>dispatch(changeview("grid"))} className={view=="grid"?styles.active:""}>
+    <button onClick={()=>dispatch(changeview("grid"))} className={view==="grid"?styles.active:""}>
       <BsFillGridFill/>
     </button>
-    <button onClick={()=>dispatch(changeview("list"))} className={view=="list"?styles.active:""}>
+    <button onClick={()=>dispatch(changeview("list"))} className={view==="list"?styles.active:""}>
       <BsList/>
     </button>
     </div>
