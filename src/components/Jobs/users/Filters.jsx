@@ -1,37 +1,39 @@
 import React from "react";
 import styles from "./filters.module.scss";
 import { useSelector, useDispatch } from "react-redux";
-import { toogleSideBar,setloc,setfilterval } from "../../../Redux/FiltersSlice/filtersslice";
+import { toogleSideBar,setloc,setfilterval,fetchUsers,setlocerror } from "../../../Redux/FiltersSlice/filtersslice";
 import { FaBars } from "react-icons/fa";
 import messages from "../../../Locale/messages";
-import { useState,useEffect } from "react";
+import { useState,useEffect,useRef } from "react";
 import logos from "../../../extras/joblogos";
 import logosar from "../../../extras/joblogosar";
 const Filters = (props) => {
   const sidebar = useSelector((state) => state.filter.isSideBarOpen);
   const selected = useSelector((state) => state.filter.locationVal);
   const filterForStyle = useSelector((state) => state.filter.filterVal);
+  const locerror = useSelector((state) => state.filter.locerror);
+
   const lang = useSelector((state) => state.lang.lang);
   const dispatch = useDispatch();
   const getselectValue=(e)=>{
     dispatch(setloc(e.target.value))
+    if(filterForStyle!==""){
+      dispatch(fetchUsers({val:filterForStyle,loc:e.target.value}))
+    } else{
+      dispatch(setlocerror(true))
+    }
+
   }
   const dispatchFilter=(val)=>{
+    if(locerror){
+      dispatch(setlocerror(false))
+    }
+    if(sidebar){
+      dispatch(toogleSideBar())
+    }
 dispatch(setfilterval(val))
+dispatch(fetchUsers(val))
   }
-//   useEffect( () => {
-//  fetch(`https://api.ipregistry.co/?key=${process.env.REACT_APP_LOC_KEY}`)
-//     .then(function (response) {
-//         return response.json();
-//     })
-//     .then(function (json) {
-//  dispatch(setloc( json["location"]["city"]))
-//     }).catch(function (err){
-//       console.log(err);
-//     })
-   
-//   },[])
-  
   const toggle = () => {
     dispatch(toogleSideBar());
   };
@@ -105,11 +107,12 @@ dispatch(setfilterval(val))
  }
  key={index}
 >
- <div className={`${styles.logoContainer} `}>
+ <div className={`${styles.logoContainer} ${!props.show?"d-flex flex-column justify-content-center align-items-center":""}  `}>
    <img
      src={logo.logoSrc}
      className="img-fluid"
      alt=""
+     onClick={()=>{dispatchFilter(logo.job)}}
    />
  </div>
  <span>{logo.job}</span>
@@ -120,14 +123,14 @@ dispatch(setfilterval(val))
 <h3 className={styles.loctitle}>{loctitle}</h3>
 <div className="pt-1">
 <label htmlFor="location" className="me-1">{location}</label>
-      <select name="location" id="location" className={styles.sortInput}  onChange={getselectValue}>
-        {/* <option defaultValue={selected==""} value="none" disabled hidden>pick a city</option> */}
+      <select name="location" id="location" className={styles.sortInput}   onChange={getselectValue}>
       <option value="none" selected={selected==""} disabled hidden>{defaultforloc}</option>
     {cities.map((city,index)=>(
               <option key={index}  value={city}>{city}</option>
 
     ))}
       </select>
+      {locerror&&<span className="text-danger">please choose a job</span>}
 </div>
 
         </div>
