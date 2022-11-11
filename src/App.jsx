@@ -1,4 +1,4 @@
-import "./App.scss";
+import React from "react";
 import { useSelector } from "react-redux";
 import NavBar from "./components/NavBar/index";
 import { Routes, Route } from "react-router-dom";
@@ -9,27 +9,28 @@ import Messaging from "./components/Messaging/index";
 import Notification from "./components/Notification/index";
 import NotFound from "./components/NotFound/index";
 import Friends from "./components/Friends/index";
-import Sidebar from "./components/Jobs/users/Sidebar";
 import Register from "./components/Register";
 import SignIn from "./components/SignIn";
+import PhoneSignUp from "./components/phoneSignUp";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   const test = useSelector((state) => state.lang.lang);
 
+  console.log(test);
   return (
     <div className={test === "en" ? "english" : "arabic"}>
       <NavBar />
-      <Sidebar />
       <Routes>
         <Route path="home" element={<Home />} />
-        <Route path="/" element={<Home />} />
         <Route path="register" element={<Register />} />
-        <Route path="signin" element={<SignIn />} />
+        <Route path="/" element={<SignIn />} />
         <Route path="profile" element={<Profile />} />
         <Route path="friends" element={<Friends />} />
         <Route path="jobs" element={<Jobs />} />
         <Route path="messaging" element={<Messaging />} />
         <Route path="notification" element={<Notification />} />
+        <Route path="/phonesignup" element={<PhoneSignUp />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

@@ -305,7 +305,7 @@ const Register = () => {
           </form>
         )}
         <p>
-          You do have an account? <Link to="/login">Login</Link>
+          You do have an account? <Link to="/">Login</Link>
         </p>
       </div>
     </div>
