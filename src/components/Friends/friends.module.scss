@@ -5,9 +5,19 @@ padding-left: 2rem;
 padding-right: 2rem;
 opacity: 0.5;
 font-size: 1.3rem;
+&:hover{
+    opacity: 1 !important;
+transition: all 1s;
+}
+}
+.nousers{
+
+border-radius: 1px;
+//     background-image: url(https://thumbs.dreamstime.com/b/emoticon-searching-mascot-vector-cartoon-illustration-emoticon-searching-mascot-vector-cartoon-illustration-original-113901025.jpg);
 }
 .active{
 opacity: 1 !important;
+border-bottom: 3px solid var(--secondaryColor);
 }
 .personcontainer{
     background-color: var(--mainColor);
@@ -18,4 +28,16 @@ opacity: 1 !important;
 }
 .person{
     border-radius: 6px;
+}
+.loader{
+    color: var(--mainColor);
+    height: 90vh;
+}
+@media screen and (max-width:768px){
+    .hide{
+        display: none;
+    }
+    .nousers{
+        background-image:none ;
+    }
 }
