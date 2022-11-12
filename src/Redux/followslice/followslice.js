@@ -1,6 +1,6 @@
 import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
 import { db } from "../../firebase";
-import { doc,updateDoc,arrayUnion } from "firebase/firestore";
+import { doc,updateDoc,arrayUnion , arrayRemove } from "firebase/firestore";
 export const addtoFollow = createAsyncThunk(
    "user/follow",
       async (val,{rejectWithValue}) => {
@@ -13,6 +13,27 @@ export const addtoFollow = createAsyncThunk(
    })
    await updateDoc(following,{
       followers:arrayUnion(val.userid)
+   })
+      }
+      catch(e){
+         return rejectWithValue(e)
+      }
+   } 
+ 
+ );
+
+ export const removeFormFollow = createAsyncThunk(
+   "user/unfollow",
+      async (val,{rejectWithValue}) => {
+         try{
+
+         const follow = doc(db, "users",val.userid);
+         const following=doc(db, "users",val.toadd);
+   await updateDoc(follow,{
+      following:arrayRemove(val.toadd)
+   })
+   await updateDoc(following,{
+      followers:arrayRemove(val.userid)
    })
       }
       catch(e){
