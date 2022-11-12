@@ -6,7 +6,7 @@ const PostSide = () => {
   return (
     <>
     <PostShare/>
-    <Posts/>
+    <Posts page='home'/>
     </>
   )
 }

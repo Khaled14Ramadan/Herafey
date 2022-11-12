@@ -8,15 +8,24 @@ import { colPost } from './../../../firebase';
 
 
 
-const Posts = () => {
+const Posts = ({page}) => {
   const [posts, setPosts] = useState([])
   const { currentUser } = useContext(AuthContext);
-  // console.log(currentUser);
 
   //real time collection data
   /// where("uid" , "in" , currentUser.following)
   useEffect(() => {
-    const q = query(colPost, where("name", "==", "abdo ali"));
+    //home
+    console.log('following' ,currentUser.following);
+    let arr=[currentUser.uid];
+    if(currentUser.following){
+      arr = [...arr , ...currentUser.following];
+    }
+    let q = query(colPost, where("uidUser" , "in" , arr));
+    if(page=== 'profile'){
+      //profile
+      q = query(colPost, where("uidUser", "==", currentUser.uid));
+    }
     const getPosts = async () => {
       await onSnapshot(q, ((s) => {
         let postss = [];
