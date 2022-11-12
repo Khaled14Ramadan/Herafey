@@ -5,7 +5,7 @@ const en = {
     messaging: 'Messaging',
     notification: 'Notification',
     me : 'Me',
-    signOut : 'Sign Out',
+    signOutt : 'Sign Out',
     search : 'Search',
     Jobs:{
         filtertext:"Open Filters",
@@ -14,7 +14,7 @@ const en = {
         noitemsFound:"there werent any users matching these filters",
         location:"location",
         defaultforloc:"Select a city",
-        cities:["Alexandria","Cairo","Aswan","Behera","El-menya","El-Gharbya"].sort(),
+        cities:["alexandria","cairo","aswan","behera","el-menya","el-Gharbya"].sort(),
         usersfound:"users found",
         sortby:"sort by",
         sortcriteria:[
@@ -33,6 +33,9 @@ const en = {
         Video:'Video',
         Event:'Event',
         WriteArticle : "Write article",
+        CreateAPost : 'Create a post',
+        selectImage : 'Select an image to share',
+        textareaPlace : 'What do you want to talk about?',
     },
     profile:{
         job:'job : ',

@@ -18,7 +18,8 @@
   max-height: 30vh;
 }
 .ProfileImages > img:nth-of-type(2) {
-  width: 6rem;
+  width: 5rem;
+  height: 5rem;
   border-radius: 50%;
   position: absolute;
   bottom: -3rem;
