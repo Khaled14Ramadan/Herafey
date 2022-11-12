@@ -1,12 +1,15 @@
 import React from 'react'
-import img1 from "../../../assets/images/img1.png";
 import './PostShare.css'
 import { useSelector } from 'react-redux';
 import messages from './../../../Locale/messages';
 import { useState } from 'react';
-import PostalModal from './postlModal'
-const PostShare = (props) => {
+import PostalModal from './postlModal';
+import { useContext } from 'react';
+import { AuthContext } from './../../../context/AuthContext';
 
+const PostShare = (props) => {
+  const { currentUser } = useContext(AuthContext);
+//   console.log(currentUser);
     const [showModal, setShowModal] = useState("close");
 
     const language = useSelector((s) => s.lang.lang);
@@ -48,8 +51,10 @@ const PostShare = (props) => {
                 {/* disabled={props.loading ? true : false} */}
                 <div className='shareBox text-center border-none d-flexflex-column'>
                     <div>
-                        <img src={img1} className="mx-2" alt="" />
-                        {/* {props.user.photoURL ? <img src={props.user.photoURL} alt="" /> : <img src="/images/user.svg" alt="" />} */}
+                        {/* <img src={img1} className="mx-2" alt="" /> */}
+                        {currentUser.photoURL ? 
+                        <img className='userImg' src={currentUser.photoURL} alt="" /> : 
+                        <img className='userImg' src="/images/user.svg" alt="" />}
                         <button onClick={clickHandler} className="px-4">
                             {StartaPost}
                         </button>

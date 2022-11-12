@@ -31,7 +31,9 @@ const ProfileSection = () => {
                 console.log(e.message);
             }
         }
-        s();
+        if(currentUser.uid){
+            s();
+        }
     }, []);
 
     const language = useSelector((s) => s.lang.lang);

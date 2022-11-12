@@ -19,7 +19,7 @@ const Profile = () => {
         <div className="col-lg-8 col-12">
           <MainProfile userId={userId.id}/>
         <PostShare/>
-        <Posts page='profile'/>
+        <Posts page='profile' userId={userId.id}/>
         </div>
         <div className="col-lg-4 d-lg-block d-none">
           <FollowersSection/> 
