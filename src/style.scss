@@ -14,102 +14,31 @@
   }
 }
 
-.formContainer {
-  background-color: #f7e5d8;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  .formWrapper {
-    background-color: white;
-    padding: 20px 60px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-
-    .logo {
-      color: #c17138;
-      font-weight: bold;
-      font-size: 24px;
-    }
-
-    .title {
-      color: #5d5b8d;
-      font-size: 12px;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-
-      input {
-        padding: 15px;
-        border: none;
-        width: 250px;
-        border-bottom: 1px solid #c17138;
-        &::placeholder {
-          color: rgb(175, 175, 175);
-        }
-      }
-
-      button {
-        background-color: #c17138;
-        color: white;
-        padding: 10px;
-        border-radius: 6px;
-        font-weight: bold;
-        border: none;
-        cursor: pointer;
-      }
-
-      label {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        color: #8da4f1;
-        font-size: 12px;
-        cursor: pointer;
-
-        img {
-          width: 32px;
-        }
-      }
-    }
-    p {
-      color: #5d5b8d;
-      font-size: 12px;
-      margin-top: 10px;
-    }
-  }
-}
-
 .home {
   background-color: white;
-  height: 100vh;
+  height: calc(100vh - 80px);
   display: flex;
   align-items: center;
   justify-content: center;
 
-  .container {
+  .containerchat {
     border: 1px solid #f7e5d8;
     border-radius: 10px;
     width: 80%;
-    height: 95%;
+    height: 90%;
     display: flex;
     overflow: hidden;
     @include tablet {
       width: 90%;
+    }
+    @include mobile {
+      flex-direction: column;
     }
 
     .sidebar {
       flex: 1;
       background-color: white;
       position: relative;
-
       .navbar {
         display: flex;
         align-items: center;
@@ -162,13 +91,14 @@
             background-color: #e6b18be3;
             width: 95%;
             padding: 10px;
+            margin-top: 5px;
             border-radius: 6px;
             border: none;
             color: white;
             outline: none;
 
             &::placeholder {
-              color: white;
+              color: rgb(73, 73, 73);
             }
           }
         }
@@ -181,7 +111,10 @@
         gap: 10px;
         color: #96582b;
         cursor: pointer;
-
+        @include mobile {
+          flex-direction: column;
+          display: inline-flex;
+        }
         &:hover {
           background-color: #e6b18b;
         }
@@ -203,6 +136,11 @@
             font-size: 14px;
             color: black;
             margin: 0;
+          }
+          @include mobile {
+            p {
+              display: none;
+            }
           }
         }
       }
@@ -244,7 +182,7 @@
       .messages {
         background-color: #fbf2ec;
         padding: 10px;
-        height: calc(100% - 160px);
+        height: calc(100% - 100px);
         overflow: scroll;
 
         .message {
@@ -308,7 +246,7 @@
 
         input {
           width: 82%;
-          padding: 10px;
+          padding: 7px;
           border: none;
           outline: none;
           border-radius: 6px;
@@ -316,7 +254,7 @@
           font-size: 18px;
 
           &::placeholder {
-            color: black;
+            color: rgb(73, 73, 73);
           }
         }
 
