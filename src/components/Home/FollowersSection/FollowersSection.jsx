@@ -16,7 +16,6 @@ const myid="Lv0sr4epD1OyIeC4aZw70HCx9ae2"
     WhoFollowingYou,
     Follow,
   } = messages[language]['Home'];
-  console.log(WhoFollowingYou)
   const follow=(val,id)=>{
 dispatch(addtoFollow({toadd:val,userid:id}))
   }
