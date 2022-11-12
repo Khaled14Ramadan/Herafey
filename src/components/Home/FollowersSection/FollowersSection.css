@@ -6,7 +6,7 @@
   flex-direction: column;
   font-size: 13px;
   padding: 2rem 1rem;
-  background-color: var(--mainColor);
+  background-color: var(--white);
 }
 .FollowersCard h3 {
   text-align: center;
