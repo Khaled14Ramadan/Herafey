@@ -12,13 +12,17 @@ import {
 import { db, storage } from "../../firebase";
 import { v4 as uuid } from "uuid";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import { useSelector } from "react-redux";
+import messages from "./../../Locale/messages";
+import upload from "../../assets/images/img.png";
 
 const Input = () => {
   const [text, setText] = useState("");
   const [img, setImg] = useState(null);
-
   const { currentUser } = useContext(AuthContext);
   const { data } = useContext(ChatContext);
+  const language = useSelector((s) => s.lang.lang);
+  const { send, typesomething } = messages[language];
 
   const handleSend = async () => {
     if (img) {
@@ -76,7 +80,7 @@ const Input = () => {
     <div className="input">
       <input
         type="text"
-        placeholder="Type something..."
+        placeholder={typesomething}
         onChange={(e) => setText(e.target.value)}
         value={text}
       />
@@ -88,9 +92,9 @@ const Input = () => {
           onChange={(e) => setImg(e.target.files[0])}
         />
         <label htmlFor="file">
-          <img src="../public/images/img.png" alt="" />
+          <img src={upload} alt="" />
         </label>
-        <button onClick={handleSend}>Send</button>
+        <button onClick={handleSend}>{send}</button>
       </div>
     </div>
   );

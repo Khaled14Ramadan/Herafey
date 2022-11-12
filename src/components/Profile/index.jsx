@@ -3,7 +3,7 @@ import PostShare from "../Home/PostShare/PostShare";
 import FollowersSection from '../Home/FollowersSection/FollowersSection'
 import TrendSection from "../Home/TrendSection/TrendSection";
 import Posts from "../Home/Posts/Posts";
-import ProfileSection from './ProfileSection/ProfileSection';
+import MainProfile from './mainProfile/MainProfile';
 import './Profile.css'
 const Profile = () => {
 
@@ -13,7 +13,7 @@ const Profile = () => {
     <div className="container">
       <div className="row">
         <div className="col-lg-8 col-12">
-          <ProfileSection/>
+          <MainProfile/>
         <PostShare/>
         <Posts/>
         </div>
