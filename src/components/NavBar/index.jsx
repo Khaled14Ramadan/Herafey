@@ -8,8 +8,14 @@ import { Link, NavLink } from "react-router-dom";
 import logo from "./../../assets/images/NavBar/logo.png";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase";
+import { useContext } from 'react';
+import { AuthContext } from "../../context/AuthContext";
+// import { AuthContext } from './../../../context/AuthContext';
 
 const NavBar = () => {
+  const { currentUser } = useContext(AuthContext);
+  console.log(currentUser);
+
   const language = useSelector((s) => s.lang.lang);
   const dispatch = useDispatch();
   console.log(language);
@@ -155,8 +161,8 @@ const NavBar = () => {
                   </NavLink>
                 </li>
                 <li className="navLink user">
-                  <Link to="profile">
-                    <img src="/images/user.svg" alt="" />
+                  <Link to={`/profile/${currentUser.uid}`}>
+                    {currentUser.photoURL? <img src={currentUser.photoURL} alt="" />  : <img src="/images/user.svg" alt="" />}
                     <span>
                       {me} <img src="/images/down-icon.svg" alt="" />
                     </span>
