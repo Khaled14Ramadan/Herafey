@@ -12,12 +12,16 @@ import {
 } from "firebase/firestore";
 import { db } from "../../firebase";
 import { AuthContext } from "../../context/AuthContext";
+import messages from "./../../Locale/messages";
+import { useSelector } from "react-redux";
+
 const Search = () => {
   const [username, setUsername] = useState("");
   const [user, setUser] = useState(null);
   const [err, setErr] = useState(false);
-
   const { currentUser } = useContext(AuthContext);
+  const language = useSelector((s) => s.lang.lang);
+  const { finduser } = messages[language];
 
   const handleSearch = async () => {
     const q = query(
@@ -81,7 +85,7 @@ const Search = () => {
       <div className="searchForm">
         <input
           type="text"
-          placeholder="Find a user"
+          placeholder={finduser}
           onKeyDown={handleKey}
           onChange={(e) => setUsername(e.target.value)}
           value={username}
