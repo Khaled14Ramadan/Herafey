@@ -3,7 +3,8 @@ import Post from '../Post/Post';
 import { useContext, useState } from 'react';
 import { AuthContext } from './../../../context/AuthContext';
 import { query, where, onSnapshot } from 'firebase/firestore';
-import { colPost } from './../../../firebase';
+import { colPost, coluser } from './../../../firebase';
+import { getDocs } from 'firebase/firestore';
 
 
 
@@ -16,12 +17,19 @@ const Posts = ({page}) => {
   /// where("uid" , "in" , currentUser.following)
   useEffect(() => {
     //home
-    console.log('following' ,currentUser.following);
-    let arr=[currentUser.uid];
-    if(currentUser.following){
-      arr = [...arr , ...currentUser.following];
-    }
+    console.log(currentUser.uid);
+    let id = currentUser.uid;
+    let arr=[];
+    const x = query(coluser, where("uid", "==", id));
+    getDocs(x).then((s)=>{
+      arr = s.docs[0].data().following;
+      console.log(s.docs[0].data())});
+
+      arr.push(currentUser.uid);
+      console.log(arr);
+      
     let q = query(colPost, where("uidUser" , "in" , arr));
+    // let q = query(colPost, where("name",'==','khaled'));
     if(page=== 'profile'){
       //profile
       q = query(colPost, where("uidUser", "==", currentUser.uid));
@@ -30,17 +38,16 @@ const Posts = ({page}) => {
       await onSnapshot(q, ((s) => {
         let postss = [];
         s.docs.forEach((d) => {
-          postss.push({ ...d.data() ,hour:new Date(d.data().createAt.seconds*1000).getHours() ,
-             secound: new Date(d.data().createAt.seconds*1000).getMinutes() , createAt: new Date(d.data().createAt.seconds*1000)});
+          postss.push({ ...d.data() ,createAt: new Date(d.data().createAt.seconds*1000)});
         });
-        console.log(postss);
+        // console.log(postss);
         postss.sort(function(a,b){
           return new Date(b.createAt) - new Date(a.createAt);
         })
-        console.log(postss);
+        // console.log(postss);
         setPosts(postss);
 
-        console.log(posts);
+        // console.log(posts);
       }));
 
     }
