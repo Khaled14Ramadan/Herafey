@@ -1,0 +1,35 @@
+.usersContainer img {
+  height: 12rem;
+  width: 12rem;
+}
+
+@media screen and (max-width: 768px) {
+  .usersContainer img {
+    height: 10rem;
+  }
+}
+.usersContainer {
+  display: grid;
+  gap: 2rem 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .usersContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 992px) {
+  .usersContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1170px) {
+  .usersContainer {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .usersContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}/*# sourceMappingURL=gridview.module.css.map */

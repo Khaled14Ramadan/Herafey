@@ -1,0 +1,31 @@
+img {
+  -o-object-fit: fill;
+     object-fit: fill;
+}
+
+.imgContainer {
+  height: 11rem;
+  width: 11rem;
+}
+
+.usercontainer:hover img {
+  opacity: 0.5;
+}
+
+.usercontainer:hover .link {
+  opacity: 1;
+}
+
+footer {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+footer h5,
+footer p {
+  margin-bottom: 0;
+  font-weight: 400;
+  font-size: 1.1rem;
+}/*# sourceMappingURL=user.module.css.map */

@@ -1,12 +1,19 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
+} from "firebase/auth";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { auth } from "../../firebase";
+import { auth, db } from "../../firebase";
+import { doc, setDoc } from "firebase/firestore";
 import "./style-signin.scss";
 import image from "../../assets/images/24361836.jpg";
 import { useSelector, useDispatch } from "react-redux";
 import messages from "./../../Locale/messages";
 import { changeLang } from "../../Redux/Languageslice/languageslice";
+import GoogleButton from "react-google-button";
+import { Button } from "react-bootstrap";
 
 const SignIn = () => {
   const [err, setErr] = useState(false);
@@ -14,6 +21,11 @@ const SignIn = () => {
   const language = useSelector((s) => s.lang.lang);
   const dispatch = useDispatch();
   const { signin } = messages[language];
+
+  const googleSignIn = () => {
+    const googleAuthProvider = new GoogleAuthProvider();
+    return signInWithPopup(auth, googleAuthProvider);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,6 +39,20 @@ const SignIn = () => {
       setErr(true);
     }
   };
+
+  const handleGoogleSignIn = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await googleSignIn();
+      console.log(res);
+      // Set google user to chat
+      await setDoc(doc(db, "userChats", res.user.uid), {});
+      navigate("/home");
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   return (
     <div className="content h-100">
       <button
@@ -62,15 +88,15 @@ const SignIn = () => {
                   </div>
                   {err && <span className="text-danger">{signin.err}</span>}
                   <div className="d-flex mb-2  justify-content-between">
-                    <div class="form-check form-switch">
+                    <div className="form-check form-switch">
                       <input
-                        class="form-check-input"
+                        className="form-check-input"
                         type="checkbox"
                         id="flexSwitchCheckDefault"
                       />
                       <label
-                        class="form-check-label"
-                        for="flexSwitchCheckDefault"
+                        className="form-check-label"
+                        htmlFor="flexSwitchCheckDefault"
                       >
                         {signin.rememberme}
                       </label>
@@ -93,12 +119,29 @@ const SignIn = () => {
                   </span>
 
                   <div className="social-login">
-                    <a href="#" className="facebook">
-                      <span className="icon-facebook mr-3"></span>
-                    </a>
-                    <a href="#" className="google">
-                      <span className="icon-google mr-3"></span>
-                    </a>
+                    <div className="facebook">
+                      <span className=" icon-facebook  mr-3">
+                        <Link to="/phonesignup">
+                          <Button
+                            className="button"
+                            variant="success"
+                            type="Submit"
+                          >
+                            Sign in with Phone
+                          </Button>
+                        </Link>
+                      </span>
+                    </div>
+
+                    <span className="google icon-google mr-3">
+                      <div>
+                        <GoogleButton
+                          className="g-btn"
+                          type="dark"
+                          onClick={handleGoogleSignIn}
+                        />
+                      </div>
+                    </span>
                   </div>
                 </form>
                 <p>

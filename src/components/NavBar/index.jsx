@@ -163,7 +163,7 @@ const NavBar = () => {
                   </Link>
                   <div className="signOut">
                     <button className="bttn px-2" onClick={() => signOut(auth)}>
-                      {signOutt}
+                      logout
                     </button>
                     <button
                       className="bttn px-2"

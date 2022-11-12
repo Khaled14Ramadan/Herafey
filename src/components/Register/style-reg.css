@@ -1,0 +1,32 @@
+a {
+  transition: 0.3s all ease;
+}
+a:hover {
+  text-decoration: none !important;
+}
+
+.content1 .lang-change {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+.content1 .contents {
+  background-color: rgba(255, 255, 255, 0.9725490196);
+  padding: 30px 15px;
+  border-radius: 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.content1 .contents .img-wrapper {
+  height: 270px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.content1 .contents .img-wrapper img {
+  max-width: 100%;
+  max-height: 100%;
+}
+.content1 .contents a {
+  color: #888;
+  text-decoration: underline;
+}/*# sourceMappingURL=style-reg.css.map */

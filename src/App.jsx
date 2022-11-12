@@ -14,6 +14,7 @@ import Register from "./components/Register";
 import SignIn from "./components/SignIn";
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
+import PhoneSignUp from "./components/phoneSignUp";
 
 function App() {
   const test = useSelector((state) => state.lang.lang);
@@ -45,6 +46,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Route>
         <Route path="signin" element={<SignIn />} />
+        <Route path="/phonesignup" element={<PhoneSignUp />} />
         <Route path="register" element={<Register />} />
       </Routes>
     </div>
