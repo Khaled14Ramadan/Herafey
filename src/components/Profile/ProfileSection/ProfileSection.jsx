@@ -1,21 +1,46 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './profile.css'
-import ProfileImage from '../../../assets/images/ProfileCardImg.png'
+// import ProfileImage from '../../../assets/images/ProfileCardImg.png'
 import Cover from '../../../assets/images/ProfileHeader.jpg'
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../../../context/AuthContext';
+import { coluser } from '../../../firebase';
+import { getDocs, query, where } from 'firebase/firestore';
+import { useState } from 'react';
+
 
 const ProfileSection = () => {
+    const { currentUser } = useContext(AuthContext);
+    const [user, setUser] = useState({});
+    // console.log(typeof currentUser.uid);
 
+    useEffect(() => {
+        const s = async() => {
+            const q = query(coluser, where("uid", "==", currentUser.uid));
+            try {
+                const x = await getDocs(q);
+            const data = x.docs[0].data();
+            console.log(data);
+            setUser(data);
+            console.log(user);
+            }
+            catch (e){
+                console.log(e.message);
+            }
+        }
+        s();
+    }, []);
   return (
     <>
     <div className='ProfileCard mt-5'>
         <div className="ProfileImages">
             <img src={Cover} alt="CoverImage" />
-            <img src={ProfileImage} alt="ProfileImage" />
+            <img src={user.photoURL} alt="ProfileImage" />
         </div>
         <div className="ProfileName">
-            <span>Zosar Js</span>
-            <span>Front-End Developer</span>
+            <span>{user.displayName}</span>
+            <span>{user.job}</span>
         </div>
         <div className="followStatus">
             <hr/>

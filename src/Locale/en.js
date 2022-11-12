@@ -23,10 +23,14 @@ const en = {
         jobs: "jobs"
     },
     Home: {
-        WhoFollowingYou: 'Who is Following You',
-        Follow: 'Follow',
-        Likes: 'Likes',
-        WhatYouLookingFor: 'is want write article ?',
+        WhoFollowingYou :'Who is Following You',
+        Follow : 'Follow',
+        Likes : 'Likes',
+        StartaPost :'Start a post',
+        Photo :'Photo',
+        Video:'Video',
+        Event:'Event',
+        WriteArticle : "Write article",
     },
     send: 'Send',
     finduser: 'Search for Friend',

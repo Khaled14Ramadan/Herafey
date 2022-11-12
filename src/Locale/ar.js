@@ -20,11 +20,15 @@ const ar = {
         jobs: "وظائف"
 
     },
-    Home: {
-        WhoFollowingYou: 'من يتابعك',
+    Home:{
+        WhoFollowingYou : 'من يتابعك',
         Follow: 'متابعة',
-        Likes: ' إعجاب',
-        WhatYouLookingFor: 'هل تريد كتابة مقال؟',
+        Likes :' إعجاب',
+        StartaPost:'اكتب بوست',
+        Photo :'صورة',
+        Video:'فيديو',
+        Event:'حدث',
+        WriteArticle : 'اكتب مقال',
     },
     send: 'إرسال',
     finduser: 'ابحث عن صديق',
