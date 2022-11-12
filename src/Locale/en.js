@@ -9,6 +9,7 @@
     search : 'Search',
     Jobs:{
         filtertext:"Open Filters",
+        filtertitle:"filters",
         noitems:"choose a job category to see some results here ",
         noitemsFound:"there werent any users matching these filters",
         location:"location",
@@ -20,7 +21,8 @@
             "a-z","z-a"
         ],
         loctitle:"choose your city",
-        jobs:"jobs"
+        jobs:"jobs",
+        filterjobs:[["electrician","كهربائي"],["plumber","سباك"],["carpenter","نجار"],["ironsmith","حداد"]]
     },
     Home: {
         WhoFollowingYou :'Who is Following You',

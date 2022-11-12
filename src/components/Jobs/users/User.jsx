@@ -7,8 +7,12 @@ const Product = () => {
   const filteredUsers=useSelector((state)=>state.filter.filteredUsers)
   const error=useSelector((state)=>state.filter.error)
   const loading=useSelector((state)=>state.filter.loading)
-
-  console.log(filteredUsers);
+// const regex=/\.(jpeg|jpg|png|gif)\b/i
+const fallbackImg="https://bitsofco.de/content/images/2018/12/broken-1.png"
+const setfallback=(e)=>{
+e.target.src=fallbackImg
+}
+// console.log(regex.test("asd.png"));
 // if(loading){
 //   return(
 //     <p>loading</p>
@@ -23,10 +27,10 @@ const Product = () => {
   return (
     <>
     {filteredUsers?.length > 0 && !loading && filteredUsers.map((user)=>(
-        <section className="overflow-hidden">
+        <section className="overflow-hidden" key={user.uid}>
         <div className={`d-flex justify-content-center`}>
           <Link to={`/profile/${user.uid}`}>
-          <img className="rounded-circle img-fluid" src={user.photoURL}/>
+          <img className="rounded-circle img-fluid" onError={setfallback}  src={user.photoURL}/>
 
           </Link>
         </div>
@@ -38,53 +42,7 @@ const Product = () => {
       </section>
     ))}
 
-    {/* <section>
-    <div className={`d-flex justify-content-center`}>
-      <img className="rounded-circle img-fluid" src="https://dl.airtable.com/.attachmentThumbnails/89ba7458c24252be77f5a835dd398880/c13ef359"/>
-    </div>
-    <footer>
-      <h5 className="pb-1">Marwan mohamed </h5>
-      <p>11111</p>
-    </footer>
-    
-  </section> */}
-  {/* <section>
-    <div className={`d-flex justify-content-center`}>
-      <img className="rounded-circle img-fluid" src="https://dl.airtable.com/.attachmentThumbnails/89ba7458c24252be77f5a835dd398880/c13ef359"/>
-    </div>
-    <footer>
-      <h5 className="pb-1">Marwan mohamed </h5>
-      <p>11111</p>
-    </footer>
-    
-  </section> */}
-  {/* <section>
-    <div className="d-flex justify-content-center">
-      <img className="rounded-circle img-fluid" src="https://dl.airtable.com/.attachmentThumbnails/89ba7458c24252be77f5a835dd398880/c13ef359"/>
-    </div>
-    <footer>
-      <h5>Name</h5>
-      <p>Rating</p>
-    </footer>
-  </section>
-  <section>
-    <div className="d-flex justify-content-center">
-      <img className="rounded-circle img-fluid" src="https://dl.airtable.com/.attachmentThumbnails/89ba7458c24252be77f5a835dd398880/c13ef359"/>
-    </div>
-    <footer>
-      <h5>ajsd</h5>
-      <p>123</p>
-    </footer>
-  </section>
-  <section>
-    <div className="d-flex justify-content-center">
-      <img className="rounded-circle img-fluid" src="https://dl.airtable.com/.attachmentThumbnails/89ba7458c24252be77f5a835dd398880/c13ef359"/>
-    </div>
-    <footer>
-      <h5>ajsd</h5>
-      <p>123</p>
-    </footer>
-  </section> */}
+
  
     </>
 

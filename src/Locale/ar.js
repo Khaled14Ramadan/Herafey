@@ -9,6 +9,7 @@
     search : 'البحث',
     Jobs:{
         filtertext:"عرض الفلاتر",
+        filtertitle:"فلاتر",
         noitems:"عما تريد البحث اليوم؟",
         noitemsFound:"لا يوجد اي شخص ",
         location:"المحافظة",
@@ -17,7 +18,8 @@
         usersfound:"عملاء موجودون",
         sortby:"رتب حسب",
         sortcriteria:["أ-ي","ي-أ"],
-        jobs:"وظائف"
+        jobs:"وظائف",
+        filterjobs:["كهربائي","سباك","نجار","حداد"]
 
     },
     Home:{

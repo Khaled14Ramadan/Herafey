@@ -1,0 +1,21 @@
+.btncontainer button{
+padding-top: 1rem;
+padding-bottom: 1rem;
+padding-left: 2rem;
+padding-right: 2rem;
+opacity: 0.5;
+font-size: 1.3rem;
+}
+.active{
+opacity: 1 !important;
+}
+.personcontainer{
+    background-color: var(--mainColor);
+}
+.imgcontainer{
+    height: 5.6rem;
+    width: 5.6rem;
+}
+.person{
+    border-radius: 6px;
+}

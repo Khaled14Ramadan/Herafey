@@ -34,8 +34,8 @@
     column-gap: 0.5rem;
     button {
       background: transparent;
-      border: 1px solid black;
-      color: black;
+      border: 1px solid var(--mainColor);
+      color:var(--secondaryColor);
       width: 1.5rem;
       border-radius: 2px;
       height: 1.5rem;
@@ -45,7 +45,7 @@
      
     }
     .active {
-      background: black;
+      background: var(--secondaryColor);
       color: white;
     }
   }
