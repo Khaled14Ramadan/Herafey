@@ -78,15 +78,15 @@ const Friends = () => {
       <div className={`${styels.btncontainer} d-flex justify-content-center `}>
         <button
           onClick={() => showFollowers("followers", user.followers)}
-          className={`me-2 ${active == "followers" ? styels.active : ""}`}
+          className={`me-2 ${active === "followers" ? styels.active : ""}`}
         >
-          Followers
+          {lang === "ar" ? messages[lang].following : "following"}
         </button>
         <button
-          className={`ms-2 ${active == "following" ? styels.active : ""}`}
+          className={`ms-2 ${active === "following" ? styels.active : ""}`}
           onClick={() => showList("following", user.following)}
         >
-          Following
+          {lang === "ar" ? messages[lang].followers : "followers"}
         </button>
       </div>
       <section className={`row mt-md-3 gx-5`}>
@@ -124,7 +124,7 @@ Click on the tabs above to see if you have any connections
                 </div>
               </div>
             ))}
-          {active == "following" && following?.length > 0 && loading == "done"
+          {active === "following" && following?.length > 0 && loading === "done"
             ? following.map((item) => (
                 <div className="row">
                   <div
@@ -138,7 +138,7 @@ Click on the tabs above to see if you have any connections
                           alt=""
                         />
                       </div>
-                      <div>
+                      <div className={`${lang === "ar" ? "pe-2" : "ps-2"}`}>
                         <h5 className="ps-2"> {item.displayName}</h5>
                         <h5 className="ps-2"> {item.job} </h5>
                       </div>
@@ -150,7 +150,7 @@ Click on the tabs above to see if you have any connections
                 </div>
               ))
             : ""}
-          {active == "followers" && followers?.length > 0 && loading == "done"
+          {active === "followers" && followers?.length > 0 && loading === "done"
             ? followers.map((item) => (
                 <div className="row">
                   <div
@@ -164,7 +164,7 @@ Click on the tabs above to see if you have any connections
                           alt=""
                         />
                       </div>
-                      <h5 className={`${lang == "ar" ? "pe-2" : "ps-2"}`}>
+                      <h5 className={`${lang === "ar" ? "pe-2" : "ps-2"}`}>
                         {" "}
                         {item.displayName}
                       </h5>
@@ -176,12 +176,12 @@ Click on the tabs above to see if you have any connections
                 </div>
               ))
             : ""}
-          {active == "following" &&
-            following?.length == 0 &&
-            loading == "done" && <p>you arent following anyone yet</p>}
-          {active == "followers" &&
-            followers?.length == 0 &&
-            loading == "done" && <p>you arent being followed by anyone yet</p>}
+          {active === "following" &&
+            following?.length === 0 &&
+            loading === "done" && <p>you arent following anyone yet</p>}
+          {active === "followers" && followers?.length === 0 && !loading && (
+            <p>you arent being followed by anyone yet</p>
+          )}
         </div>
 
         <div className={`col-md-4 mt-0 ${styels.hide}`}>

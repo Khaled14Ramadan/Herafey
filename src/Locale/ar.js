@@ -1,4 +1,6 @@
 const ar = {
+    followers:"متابعين",
+    following:"اتابعهم",
     homepage: 'الصفحة الرئسية',
     friends: 'الأصدقاء',
     jobs: 'وظائف',
@@ -31,6 +33,9 @@ const ar = {
         Video:'فيديو',
         Event:'حدث',
         WriteArticle : 'اكتب مقال',
+        CreateAPost:'انشاء مقال',
+        selectImage : 'اختار صورة لنشر',
+        textareaPlace : 'ماذا تريد أن نتحدث عن؟',
     },
     profile:{
         job : 'المهنه : ',

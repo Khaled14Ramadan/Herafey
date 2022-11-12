@@ -2,16 +2,18 @@
 import { useState } from 'react';
 import ReactPlayer from "react-player";
 // import { collection } from 'firebase/firestore';
-import { colPost, db, storage} from './../../../firebase';
+import { db, storage} from './../../../firebase';
 import { useContext } from 'react';
 import { AuthContext } from './../../../context/AuthContext';
-import { addDoc , serverTimestamp, Timestamp  } from 'firebase/firestore';
+import { serverTimestamp  } from 'firebase/firestore';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
-import { updateProfile } from 'firebase/auth';
-import { useEffect } from 'react';
+// import { updateProfile } from 'firebase/auth';
+// import { useEffect } from 'react';
 import { v4 as uuid } from 'uuid';
 import { setDoc } from 'firebase/firestore';
 import { doc } from 'firebase/firestore';
+import { useSelector } from 'react-redux';
+import messages from './../../../Locale/messages';
 
 
 
@@ -84,10 +86,6 @@ export default function PostalModal(props) {
         reset(event);
     }
 
-    // useEffect(()=>{
-    //     console.log(props.showModal)
-    // },[props.showModal]);
-
     function handleImage(event) {
 		let image = event.target.files[0];
 
@@ -98,13 +96,20 @@ export default function PostalModal(props) {
 		setImageFile(image);
 	}
 
+    const language = useSelector((s) => s.lang.lang);
+    const {
+        CreateAPost,
+        selectImage,
+        textareaPlace,
+    } = messages[language]['Home'];
+
     return (
         <>
             {props.showModal === "open" && (
                 <div className='postModal'>
                     <div className='contant'>
                         <div className='head'>
-                            <h2>Create a post</h2>
+                            <h2>{CreateAPost}</h2>
                             <button onClick={(event) => reset(event)}>
                                 <img src="/images/close-icon.svg" alt="" />
                             </button>
@@ -116,13 +121,13 @@ export default function PostalModal(props) {
                                 {/* <span>{props.user.displayName ? props.user.displayName : "Name"}</span> */}
                             </div>
                             <div className='Editor'>
-                                <textarea value={editorText} onChange={(event) => setEditorText(event.target.value)} placeholder="What do you want to talk about?" autoFocus={true} />
+                                <textarea value={editorText} onChange={(event) => setEditorText(event.target.value)} placeholder={textareaPlace} autoFocus={true} />
 
                                 {assetArea === "image" ? (
                                     <div className='UploadImage'>
                                         <input type="file" accept="image/gif, image/jpeg, image/png" name="image" id="imageFile" onChange={handleImage} style={{ display: "none" }} />
                                         <p>
-                                            <label htmlFor="imageFile">Select an image to share</label>
+                                            <label htmlFor="imageFile">{selectImage}</label>
                                         </p>
                                         {imageFile && <img src={URL.createObjectURL(imageFile)} alt="" />}
                                     </div>
