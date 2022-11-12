@@ -4,23 +4,25 @@ const en = {
     jobs: 'Jobs',
     messaging: 'Messaging',
     notification: 'Notification',
-    me: 'Me',
-    signOutt: 'Sign Out',
-    search: 'Search',
-    Jobs: {
-        filtertext: "Open Filters",
-        noitems: "choose a job category to see some results here ",
-        noitemsFound: "there werent any users matching these filters",
-        location: "location",
-        defaultforloc: "Select a city",
-        cities: ["Alexandria", "Cairo", "Aswan", "Behera", "El-menya", "El-Gharbya"].sort(),
-        usersfound: "users found",
-        sortby: "sort by",
-        sortcriteria: [
-            "a-z", "z-a"
+    me : 'Me',
+    signOut : 'Sign Out',
+    search : 'Search',
+    Jobs:{
+        filtertext:"Open Filters",
+        filtertitle:"filters",
+        noitems:"choose a job category to see some results here ",
+        noitemsFound:"there werent any users matching these filters",
+        location:"location",
+        defaultforloc:"Select a city",
+        cities:["Alexandria","Cairo","Aswan","Behera","El-menya","El-Gharbya"].sort(),
+        usersfound:"users found",
+        sortby:"sort by",
+        sortcriteria:[
+            "a-z","z-a"
         ],
-        loctitle: "choose your city",
-        jobs: "jobs"
+        loctitle:"choose your city",
+        jobs:"jobs",
+        filterjobs:[["electrician","كهربائي"],["plumber","سباك"],["carpenter","نجار"],["ironsmith","حداد"]]
     },
     Home: {
         WhoFollowingYou :'Who is Following You',

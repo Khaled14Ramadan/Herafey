@@ -4,23 +4,27 @@ import img1 from "../../../assets/images/img1.png";
 import img2 from "../../../assets/images/img2.png";
 import img3 from "../../../assets/images/img3.png";
 import img4 from "../../../assets/images/img4.jpg";
-import { useSelector } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
+import { addtoFollow } from '../../../Redux/followslice/followslice';
 import messages from './../../../Locale/messages';
 
 const FollowersSection = () => {
-
+const dispatch=useDispatch()
   const language = useSelector((s)=>s.lang.lang);
-
+const myid="Lv0sr4epD1OyIeC4aZw70HCx9ae2"
   const {
     WhoFollowingYou,
     Follow,
   } = messages[language]['Home'];
   console.log(WhoFollowingYou)
+  const follow=(val,id)=>{
+dispatch(addtoFollow({toadd:val,userid:id}))
+  }
   const Followers = [
-    { name: "Andrew Thomas", username: "AndrewThomas", img: img1 },
-    { name: "Hulk Buster", username: "HulkBuster", img: img2 },
-    { name: "Thor", username: "ThunderMaster", img: img3 },
-    { name: "Natasha", username: "Natasha", img: img4 },
+    { name: "Andrew Thomas", username: "AndrewThomas", img: img1,id:1 },
+    { name: "Hulk Buster", username: "HulkBuster", img: img2,id:2 },
+    { name: "Thor", username: "ThunderMaster", img: img3,id:3 },
+    { name: "Natasha", username: "Natasha", img: img4,id:"podkiMhrStcDzIp8tQlaqDf6I9H3" },
   ]
   return (
   <div className="FollowersCard mt-5">
@@ -35,7 +39,7 @@ const FollowersSection = () => {
                 <span>@{follower.username}</span>
               </div>
             </div>
-            <button className='follow-btn'> {Follow} </button>
+            <button className='follow-btn' onClick={()=>follow(follower.id,myid)}> {Follow} </button>
         </div>
       )
     })}
