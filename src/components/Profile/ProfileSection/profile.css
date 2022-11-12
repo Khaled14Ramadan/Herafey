@@ -1,6 +1,6 @@
 /* Profile Section Style */
 .ProfileCard {
-  background-color: var(--mainColor);
+  background-color: var(--white);
   border-radius: 1.5rem;
   display: flex;
   flex-direction: column;

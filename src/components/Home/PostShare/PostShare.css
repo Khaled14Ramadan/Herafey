@@ -1,39 +1,269 @@
-.PostShare{
+.PostShare {
     display: flex;
     gap: 1rem;
-    background-color: var(--mainColor);
+    background-color: var(--white);
     padding: 1.5rem 1rem;
     border-radius: 1rem;
 }
 
 
-.PostShare>img{
+/* .PostShare>img {
     border-radius: 50%;
     width: 3rem;
     height: 3rem;
-}
-.PostShare>div{
+} */
+
+.PostShare>div {
     display: flex;
     flex-direction: column;
     width: 90%;
     gap: 1rem;
 }
 
-.PostShare>div>input{
+/*
+.PostShare>div>input {
     background-color: var(--white);
     border-radius: 10px;
     padding: 10px;
     font-size: 17px;
     border: none;
     outline: none;
-}
+} */
+
 .PostShare>button {
-  padding-left: 20px;
-  padding-right: 20px;
-  background: var(--secondaryColor);
-  border: 2px solid var(--white);
-  color: var(--white);
-  font-weight: bold;
-  border-radius: 0.5rem;
-  transition: all 100ms ease-out;
+    padding-left: 20px;
+    padding-right: 20px;
+    background: var(--secondaryColor);
+    border: 2px solid var(--white);
+    color: var(--white);
+    font-weight: bold;
+    border-radius: 0.5rem;
+    transition: all 100ms ease-out;
+}
+
+.shareBox {
+    margin-bottom: 8px;
+    border-radius: 5px;
+    position: relative;
+    /* box-shadow: 0 0 0 1px rgb(0 0 0 / 15%), 0 0 0 rgb(0 0 0 / 20%); */
+    color: #958b7b;
+}
+
+.shareBox div button {
+    outline: none;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 14px;
+    line-height: 1.5;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    font-weight: 600;
+}
+
+.shareBox div:first-child {
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+}
+
+.shareBox div:first-child img {
+    width: 48px;
+    border-radius: 50%;
+    /* margin-right: 8px; */
+}
+
+.shareBox div:first-child button {
+    margin: 4px 0;
+    flex-grow: 1;
+    /* padding-left: 16px; */
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 35px;
+    /* text-align: left; */
+}
+
+.shareBox div:nth-child(2) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-bottom: 4px;
+}
+
+
+/* //////////////////////////////// */
+
+.postModal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 11;
+    background-color: rgba(0, 0, 0, 0.8);
+    animation: fadeIn 0.3s ease;
+}
+
+.postModal  .contant {
+    width: 100%;
+    max-width: 552px;
+    max-height: 90%;
+    background-color: #fff;
+    overflow: initial;
+    border-radius: 5px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    top: 32px;
+    margin: 0 auto;
+}
+
+.head {
+    display: block;
+    padding: 10px 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    font-size: 20px;
+    line-height: 1.5;
+    color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.head h2 {
+    font-weight: 400;
+}
+
+.head button {
+    width: 40px;
+    height: 40px;
+    min-width: auto;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.head img,
+.head svg {
+    pointer-events: none;
+}
+
+.sharedContent {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow-y: auto;
+    vertical-align: baseline;
+    background: transparent;
+    padding: 5px 12px;
+}
+
+.UserInfo {
+    display: flex;
+    align-items: center;
+    padding: 10px 24px;
+}
+
+.UserInfo img {
+    width: 48px;
+    height: 48px;
+    background-clip: content-box;
+    border-radius: 50%;
+    border: 2px solid transparent;
+}
+
+.UserInfo span {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-left: 5px;
+}
+
+.Editor {
+    padding: 12px 24px;
+}
+
+.Editor textarea {
+    width: 100%;
+    min-height: 100px;
+    resize: none;
+}
+
+.Editor input {
+    width: 100%;
+    height: 35px;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.UploadImage {
+    text-align: center;
+}
+
+.UploadImage img {
+    width: 100%;
+}
+
+.ShareCreation {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 24px 10px 16px;
+}
+
+.AttachAsset {
+    display: flex;
+    align-items: center;
+}
+
+.AssetButton {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    min-width: auto;
+    margin-right: 8px;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    justify-content: center;
+    background: transparent;
+}
+
+
+.AssetButton:hover {
+    background: rgba(0, 0, 0, 0.08);
+}
+
+
+.ShareComment {
+    padding-left: 8px;
+    margin-right: auto;
+    border-left: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.ShareComment .AssetButton {
+    border-radius: 50px;
+    padding: 5px 10px;
+}
+
+.ShareComment .AssetButton span {
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.6);
+    padding: 0 5px;
+}
+
+.PostButton {
+    min-width: 60px;
+	padding: 0 16px;
+	border-radius: 20px;
+	background: #0a66c2;
+	color: #fff;
+	font-size: 16px;
+	letter-spacing: 1.1px;
+	border: none;
+	outline: none;
+}
+
+.PostButton:hover {
+    background-color:  #004182;
 }
