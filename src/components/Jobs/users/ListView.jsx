@@ -7,8 +7,10 @@ const ListView = () => {
   const loading=useSelector((state)=>state.filter.loading)
   const error=useSelector((state)=>state.filter.error)
   const view=useSelector((state)=>state.filter.view)
- 
-  console.log(filteredUsers);
+  const fallbackImg="https://bitsofco.de/content/images/2018/12/broken-1.png"
+  const setfallback=(e)=>{
+  e.target.src=fallbackImg
+  }
   // if(loading){
   //   return(
   //     <p>loading</p>
@@ -23,10 +25,10 @@ const ListView = () => {
     <>
 {filteredUsers?.length > 0 && !loading &&filteredUsers.map((user)=>(
   <section className={styles.listviewWrapper}>
-  <article>
+  <article className="mb-2">
   <div className={styles.imgContainer}>
     <Link to={`/profile/${user.uid}`}>
-    <img src={user.photoURL} />
+    <img src={user.photoURL} onError={setfallback}/>
     </Link>
   </div>
 <div className='ps-1 pt-2'>

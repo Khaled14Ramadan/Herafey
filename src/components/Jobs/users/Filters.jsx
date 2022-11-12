@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { toogleSideBar,setloc,setfilterval,fetchUsers,setlocerror } from "../../../Redux/FiltersSlice/filtersslice";
 import { FaBars } from "react-icons/fa";
 import messages from "../../../Locale/messages";
-import { useState,useEffect,useRef } from "react";
 import logos from "../../../extras/joblogos";
 import logosar from "../../../extras/joblogosar";
 const Filters = (props) => {
@@ -21,6 +20,7 @@ const Filters = (props) => {
       dispatch(fetchUsers({val:filterForStyle,loc:e.target.value}))
     } else{
       dispatch(setlocerror(true))
+
     }
 
   }
@@ -32,12 +32,24 @@ const Filters = (props) => {
       dispatch(toogleSideBar())
     }
 dispatch(setfilterval(val))
-dispatch(fetchUsers(val))
+if(selected!==""){
+  dispatch(fetchUsers({val:val,loc:selected}))
+
+} else{
+  dispatch(fetchUsers(val))
+}
   }
   const toggle = () => {
     dispatch(toogleSideBar());
   };
-  const { filtertext,cities,location,loctitle,defaultforloc,jobs } = messages[lang].Jobs;
+  const { filtertext,cities,location,loctitle,defaultforloc,jobs,filtertitle } = messages[lang].Jobs;
+  const{filterjobs}=messages["en"].Jobs
+  const filterfunc=(job)=>{
+    const finds=(arr)=>{
+      return arr.includes(job)
+        }
+      return  filterjobs.find(finds)
+  }
   return (
     <>
       <button
@@ -59,30 +71,14 @@ dispatch(fetchUsers(val))
             props.show ? `row g-3 px-1  ` : `row g-3 px-3 ${styles.hide}`
           }
         >
-          <h2 className="text-center">Filters</h2>
+          <h2 className="text-center">{filtertitle}</h2>
           <h3 className={styles.loctitle}>{jobs}</h3>
-          {/* <div
-            className={
-              props.show
-                ? `col-2 text-center ${styles.filterLogo}`
-                : `col-3 text-center  col-md-4 ${styles.filterLogo}`
-            }
-          >
-            <div className={`${styles.logoContainer} `}>
-              <img
-                src="https://elasticbeanstalk-us-east-2-780758728594.s3.us-east-2.amazonaws.com/majors/Electricity.png"
-                className="img-fluid"
-                alt=""
-              />
-            </div>
-            <span>نجار</span>
-          </div> */}
           {lang==="en"&&logos.map((logo,index)=>(
  <div
  className={
    props.show
-     ? `col-2 text-center ${styles.filterLogo} ${filterForStyle===""?"":filterForStyle===logo.job?"":styles.notactivelogo}`
-     : `col-3 text-center   col-md-4 ${styles.filterLogo} ${filterForStyle===""?"":filterForStyle===logo.job?"":styles.notactivelogo}`
+     ? `col-2 text-center ${styles.filterLogo} ${filterForStyle===""?"":filterForStyle.includes(logo.job)?"":styles.notactivelogo}`
+     : `col-3 text-center   col-md-4 ${styles.filterLogo} ${filterForStyle===""?"":filterForStyle.includes(logo.job)?"":styles.notactivelogo}`
  }
  key={index}
 >
@@ -91,7 +87,7 @@ dispatch(fetchUsers(val))
      src={logo.logoSrc}
      className="img-fluid"
      alt=""
-     onClick={()=>{dispatchFilter(logo.job)}}
+     onClick={()=>{dispatchFilter(filterfunc(logo.job))}}
    />
     <span className="pt-1">{logo.job}</span>
  </div>
@@ -102,8 +98,8 @@ dispatch(fetchUsers(val))
  <div
  className={
    props.show
-     ? `col-2 text-center ${styles.filterLogo} ${filterForStyle===""?"":filterForStyle===logo.job?"":styles.notactivelogo}`
-     : `col-3 text-center   col-md-4 ${styles.filterLogo} ${filterForStyle===""?"":filterForStyle===logo.job?"":styles.notactivelogo}`
+     ? `col-2 text-center ${styles.filterLogo} ${filterForStyle===""?"":filterForStyle.includes(logo.job)?"":styles.notactivelogo}`
+     : `col-3 text-center   col-md-4 ${styles.filterLogo} ${filterForStyle===""?"":filterForStyle.includes(logo.job)?"":styles.notactivelogo}`
  }
  key={index}
 >
@@ -112,7 +108,7 @@ dispatch(fetchUsers(val))
      src={logo.logoSrc}
      className="img-fluid"
      alt=""
-     onClick={()=>{dispatchFilter(logo.job)}}
+     onClick={()=>{dispatchFilter(filterfunc(logo.job))}}
    />
  </div>
  <span>{logo.job}</span>
@@ -123,8 +119,8 @@ dispatch(fetchUsers(val))
 <h3 className={styles.loctitle}>{loctitle}</h3>
 <div className="pt-1">
 <label htmlFor="location" className="me-1">{location}</label>
-      <select name="location" id="location" className={styles.sortInput}   onChange={getselectValue}>
-      <option value="none" selected={selected==""} disabled hidden>{defaultforloc}</option>
+      <select name="location" id="location" className={styles.sortInput} disabled={filterForStyle==""} defaultValue={defaultforloc}  onChange={getselectValue}>
+      <option value={defaultforloc}  disabled >{defaultforloc}</option>
     {cities.map((city,index)=>(
               <option key={index}  value={city}>{city}</option>
 

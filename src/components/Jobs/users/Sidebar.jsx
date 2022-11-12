@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from "./sidebar.module.scss"
+import image from "../../../assets/images/NavBar/logo.png"
 import { FaTimes } from 'react-icons/fa'
 import { useSelector,useDispatch } from 'react-redux'
 import{toogleSideBar} from "../../../Redux/FiltersSlice/filtersslice"
@@ -11,7 +12,7 @@ const dispatch=useDispatch()
     <div>
  <aside className={`${sidebar?`${styles.sidebar} ${styles.showsidebar} `:styles.sidebar}`}>
     <div className={styles.sidebarheader}>
-      <img src='' className={styles.logo}/>
+      <img src="" className={styles.logo}/>
       <button className={styles.closebtn} onClick={()=>dispatch(toogleSideBar())}><FaTimes/></button>
     </div>
     

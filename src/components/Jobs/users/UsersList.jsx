@@ -13,6 +13,7 @@ const UsersList = () => {
 const isfilterEmpty=useSelector((state)=>state.filter.filterVal)
 const filteredUsers=useSelector((state)=>state.filter.filteredUsers)
 const loading=useSelector((state)=>state.filter.loading)
+const error=useSelector((state)=>state.filter.error)
 const{noitems,noitemsFound}=messages[lang].Jobs
 if(!isfilterEmpty){
   return (
@@ -26,9 +27,14 @@ if(loading){
     </div>
   )
 }
+if(error){
+  return(
+  <p className={` text-center ${styles.noitems}`}>There was an error during getting the users</p>
+  )
+}
 if(isfilterEmpty&&filteredUsers?.length==0&&!loading){
   return(
-  <p className={` text-center`}>{noitemsFound}</p>
+  <p className={` text-center ${styles.noitems}`}>{noitemsFound}</p>
   )
 }
   if(view=="list"&&filteredUsers?.length>0&&!loading){
