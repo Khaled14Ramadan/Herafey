@@ -37,7 +37,8 @@ function App() {
         <Route element={<ProtectedRoutes />}>
           <Route path="home" element={<Home />} />
           <Route path="/" element={<Home />} />
-          <Route path="profile" element={<Profile />} />
+          {/* <Route path="profile" element={<Profile />} /> */}
+          <Route path="profile/:id" element={<Profile />} />
           <Route path="friends" element={<Friends />} />
           <Route path="jobs" element={<Jobs />} />
           <Route path="messaging" element={<Messaging />} />

@@ -8,6 +8,8 @@ import { AuthContext } from '../../../context/AuthContext';
 import { coluser } from '../../../firebase';
 import { getDocs, query, where } from 'firebase/firestore';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import messages from './../../../Locale/messages';
 
 
 const ProfileSection = () => {
@@ -16,50 +18,56 @@ const ProfileSection = () => {
     // console.log(typeof currentUser.uid);
 
     useEffect(() => {
-        const s = async() => {
+        const s = async () => {
             const q = query(coluser, where("uid", "==", currentUser.uid));
             try {
                 const x = await getDocs(q);
-            const data = x.docs[0].data();
-            console.log(data);
-            setUser(data);
-            console.log(user);
+                const data = x.docs[0].data();
+                console.log(data);
+                setUser(data);
+                // console.log(user);
             }
-            catch (e){
+            catch (e) {
                 console.log(e.message);
             }
         }
         s();
     }, []);
-  return (
-    <>
-    <div className='ProfileCard mt-5'>
-        <div className="ProfileImages">
-            <img src={Cover} alt="CoverImage" />
-            <img src={user.photoURL} alt="ProfileImage" />
-        </div>
-        <div className="ProfileName">
-            <span>{user.displayName}</span>
-            <span>{user.job}</span>
-        </div>
-        <div className="followStatus">
-            <hr/>
-            <div>
-            <div className="follow">
-                <span>1804</span>
-                <span>Following</span>
+
+    const language = useSelector((s) => s.lang.lang);
+    const {
+        job, Following, Followers,MyProfile
+    } = messages[language].profile;
+
+    return (
+        <>
+            <div className='ProfileCard mt-5'>
+                <div className="ProfileImages">
+                    <img src={Cover} alt="CoverImage" />
+                    <img src={user.photoURL} alt="ProfileImage" />
+                </div>
+                <div className="ProfileName">
+                    <span>{user.displayName}</span>
+                    {user.job ? <p> <span className='title'>{job} </span> {user.job} </p> : ''}
+                </div>
+                <div className="followStatus">
+                    <hr />
+                    <div>
+                        <div className="follow">
+                            {/* <span>{user.following.length}</span> */}
+                            <span><Link to='/friends' className='follow-links'>{Following}</Link></span>
+                        </div>
+                        <div className="follow">
+                            {/* <span>{user?.followers.length}</span> */}
+                            <span> <Link to='/friends' className='follow-links'>{Followers}</Link></span>
+                        </div>
+                    </div>
+                    <hr />
+                </div>
+                <span> <Link to={`/profile/${currentUser.uid}`} className='ProLink'>{MyProfile} </Link></span>
             </div>
-            <div className="follow">
-                <span>999</span>
-                <span>Followers</span>
-            </div>
-            </div>
-            <hr/>
-        </div>
-        <span> <Link to='/profile'className='ProLink'>My Profile </Link></span>
-    </div>
-    </>
-  )
+        </>
+    )
 }
 
 export default ProfileSection

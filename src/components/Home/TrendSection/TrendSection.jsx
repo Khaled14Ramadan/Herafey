@@ -1,5 +1,7 @@
 import React from 'react'
-import './TrendSection.css'
+import './TrendSection.css';
+import { useSelector } from 'react-redux';
+import messages from './../../../Locale/messages';
 const TrendSection = () => {
     const TrendData= [
         {
@@ -28,9 +30,14 @@ const TrendSection = () => {
         },
       ];
       
+      const language = useSelector((s) => s.lang.lang);
+      const {
+        TrendsForYour
+      } = messages[language].profile;
+
   return (
     <div className='TrendCard mt-5'>
-       <h3>Trends for your</h3>
+       <h3>{TrendsForYour}</h3>
         {TrendData.map(trend =>{
             return(
                 <div className="trend">
