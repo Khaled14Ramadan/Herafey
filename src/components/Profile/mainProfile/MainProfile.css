@@ -1,122 +1,127 @@
 /* Profile Section Style */
 .Profile-Card {
-    background-color : var(--Background-Card);
-    border-radius: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    overflow-x: clip;
-  }
-  .Profile-Images {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  .Profile-Images > img:nth-of-type(1) {
-    width: 100%;
-    max-height: 25vh;
-  }
-  .Profile-Images > img:nth-of-type(2) {
-    width: 6rem;
-    border-radius: 50%;
-    position: absolute;
-    bottom: -3rem;
-  }
-  
-  .Profile-Name {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 3rem;
-    color: var(--secondaryColor);
-    gap: 10px;
-  }
-  .Profile-Name > span:nth-of-type(1) {
-    font-weight: bold;
-    font-size: 1.5rem;
-  }
-  .Profile-Name > span:nth-of-type(2) {
-    font-weight: bold;
-    font-size: 1.2rem;
-  }
-  .Profile-Name > span:nth-of-type(3) {
-    font-weight: bold;
-    font-size: 1.1rem;
-  }
-  
-  .follow-Status {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-  }
-  
-  .follow-Status > hr {
-    width: 85%;
-    border: 3px solid var(--secondaryColor);
-  }
-  
-  .follow-Status > div {
-    display: flex;
-    gap: 1rem;
-    width: 80%;
-    justify-content: space-around;
-    align-items: center;
-  }
-  
-  .follow {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-    align-items: center;
-    justify-content: center;
-  }
-  .follow > span:nth-of-type(1) {
-    font-size: 1.1rem;
+  background-color: var(--Background-Card);
+  border-radius: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  overflow-x: clip;
+}
 
-    font-weight: bold;
+.Profile-Images {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
-  }
-  
-  .follow > span:nth-of-type(2) {
-      font-size: 1.4rem;
-      font-weight: bold;
-      
-    }
-    
-    .follow .follow-links {
-      color: var(--secondaryColor);
-    text-decoration: none;
-  }
-  .Profile-Card > span {
+.Profile-Images>img:nth-of-type(1) {
+  width: 100%;
+  max-height: 25vh;
+}
+
+.Profile-Images>img:nth-of-type(2) {
+  width: 6rem;
+  border-radius: 50%;
+  position: absolute;
+  bottom: -3rem;
+}
+
+.Profile-Name {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3rem;
+  color: var(--secondaryColor);
+  /* gap: 10px; */
+}
+
+.Profile-Name>span:nth-of-type(1) {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+/*  */
+
+.follow-Status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.follow-Status>hr {
+  width: 85%;
+  border: 3px solid var(--secondaryColor);
+}
+
+.follow-Status>div {
+  display: flex;
+  gap: 1rem;
+  width: 80%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.follow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.follow>span:nth-of-type(1) {
+  font-size: 1.1rem;
+  font-weight: bold;
+
+}
+
+.follow>span:nth-of-type(2) {
+  font-size: 1.4rem;
+  font-weight: bold;
+
+}
+
+.follow .follow-links {
+  color: var(--secondaryColor);
+  text-decoration: none;
+}
+
+/* .Profile-Card > span {
     font-weight: bold;
     text-align: center;
     margin-bottom: 1.5rem;
     margin-top: 1rem;
+    background-color: bl;
     cursor: pointer;
-  }
+  } */
 .Pro-Btns {
-    display: flex;
-    margin: 0 auto;
-    margin-bottom: 2rem;
+  display: flex;
+  margin: 0 auto;
+  margin-bottom: 2rem;
 }
-  .Pro-Btns .Pro-Btn {
-    background-color: var(--secondaryColor);
-    text-decoration: none;
-    border: 2px solid var(--white);
-    padding: 0.5rem;
-    border-radius: 5px;
-    min-width: 10rem;
-}
-  .Pro-Btns .Pro-Btn .Pro-Link {
-      text-decoration: none;
-      color: var(--white);
-      font-weight: bold;
-  }
-  
 
-  .title {
-    font-weight: bold;
-  }
+.Pro-Btns .Pro-Btn {
+  background-color: var(--secondaryColor);
+  text-decoration: none;
+  border: 2px solid var(--white);
+  height: 2rem;
+  padding: 0 20px;
+  color: var(--white);
+  font-weight: bold;
+  border-radius: 0.5rem;
+  transition: all 100ms ease-out;
+}
+
+.Pro-Btns .Pro-Btn .Pro-Link {
+  text-decoration: none;
+  color: var(--white);
+  font-weight: bold;
+}
+
+
+.title {
+  font-weight: bold;
+}
